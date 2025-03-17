@@ -1,0 +1,79 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red130\green53\blue188;\red255\green255\blue254;\red0\green0\blue0;
+\red83\green133\blue132;\red143\green16\blue118;\red16\green121\blue2;\red153\green115\blue4;}
+{\*\expandedcolortbl;;\cssrgb\c58824\c31373\c78431;\cssrgb\c100000\c100000\c99608;\cssrgb\c0\c0\c0;
+\cssrgb\c39216\c58824\c58824;\cssrgb\c63529\c15686\c53725;\cssrgb\c0\c53333\c0;\cssrgb\c66667\c52157\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 sequenceDiagram
+\f1\b0 \cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3   \cf5 \strokec5 participant\cf0 \strokec4  \cf6 \strokec6 Meta\cf0 \strokec4  \cf5 \strokec5 as\cf0 \strokec4  \cf6 \strokec6 Meta\cf0 \cb1 \strokec4 \
+\cb3   \cf5 \strokec5 participant\cf0 \strokec4  \cf6 \strokec6 Webhook\cf0 \strokec4  \cf5 \strokec5 as\cf0 \strokec4  \cf6 \strokec6 ext\cf0 \strokec4 -\cf6 \strokec6 gateway\cf0 \cb1 \strokec4 \
+\cb3   \cf5 \strokec5 participant\cf0 \strokec4  \cf6 \strokec6 Backend\cf0 \strokec4  \cf5 \strokec5 as\cf0 \strokec4  \cf6 \strokec6 Telemarketing\cf0 \strokec4 -\cf6 \strokec6 cc\cf0 \strokec4 -\cf6 \strokec6 backend\cf0 \cb1 \strokec4 \
+\cb3   \cf5 \strokec5 participant\cf0 \strokec4  \cf6 \strokec6 GraphAPI\cf0 \strokec4  \cf5 \strokec5 as\cf0 \strokec4  \cf6 \strokec6 Meta\cf0 \strokec4  \cf6 \strokec6 Graph\cf0 \strokec4  \cf6 \strokec6 API\cf0 \cb1 \strokec4 \
+\cb3   \cf5 \strokec5 participant\cf0 \strokec4  \cf6 \strokec6 WebAgentDB\cf0 \strokec4  \cf5 \strokec5 as\cf0 \strokec4  \cf6 \strokec6 WebAgentDb\cf0 \cb1 \strokec4 \
+\
+\cb3   \cf6 \strokec6 Meta\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Webhook
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  GET /webhook (Do\uc0\u287 rulama)\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Webhook\cf0 \strokec4  
+\f0\b \cf7 \strokec7 -->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Meta
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  hub.challenge Yan\uc0\u305 t\u305 \cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Meta\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Webhook
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  POST /webhook (Lead ID ve G\'fcvenlik Hash'i)\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Webhook\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Webhook
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  X-Hub-Signature-256 ile Hash Do\uc0\u287 rulama\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Webhook\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Backend
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  Route - /webhook (Lead ID)\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Backend\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 WebAgentDB
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  GetToken\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 WebAgentDB\cf0 \strokec4  
+\f0\b \cf7 \strokec7 -->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Backend
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  TOKEN bilgisi d\'f6ner\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Backend\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 GraphAPI
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  GET /\{LEAD_ID\}?access_token=TOKEN\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 GraphAPI\cf0 \strokec4  
+\f0\b \cf7 \strokec7 -->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Backend
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  Lead Detaylar\uc0\u305  JSON\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 Backend\cf0 \strokec4  
+\f0\b \cf7 \strokec7 ->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 WebAgentDB
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  Lead Verisini \uc0\u304 \u351 leme & Kaydetme\cf0 \cb1 \strokec4 \
+\cb3   \cf6 \strokec6 WebAgentDB\cf0 \strokec4  
+\f0\b \cf7 \strokec7 -->>
+\f1\b0 \cf0 \strokec4  \cf6 \strokec6 Backend
+\f0\b \cf0 \strokec4 :
+\f1\b0 \cf8 \strokec8  \uc0\u304 \u351 lem Ba\u351 ar\u305 l\u305 \cf0 \cb1 \strokec4 \
+\
+\
+\
+}
